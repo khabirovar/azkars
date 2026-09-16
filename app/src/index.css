@@ -136,6 +136,9 @@ button {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   /* Must match .reader-deck's touch-action: without this, Chrome's gesture
      resolution for a touch starting on this scrollable element cancels the
      pointer sequence entirely on the first horizontal move instead of letting
