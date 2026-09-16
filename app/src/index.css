@@ -136,6 +136,12 @@ button {
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  /* Must match .reader-deck's touch-action: without this, Chrome's gesture
+     resolution for a touch starting on this scrollable element cancels the
+     pointer sequence entirely on the first horizontal move instead of letting
+     it through to the deck's own swipe handling (confirmed via isolated
+     repro — the intersection with the ancestor's pan-y alone isn't enough). */
+  touch-action: pan-y;
 }
 
 .reader-info-button {

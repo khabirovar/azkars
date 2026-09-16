@@ -25,10 +25,6 @@ export function SwipeDeck<T>({ items, index, onIndexChange, renderItem }: SwipeD
     startX.current = e.clientX;
     startY.current = e.clientY;
     horizontal.current = false;
-    // Guarantees this element keeps receiving move/up events (and that pointerup
-    // or pointercancel eventually fires here) even if the pointer leaves it
-    // mid-drag — otherwise endDrag never runs and the card stays stuck offset.
-    (e.currentTarget as Element).setPointerCapture(e.pointerId);
   }
 
   function onPointerMove(e: PointerEvent) {
@@ -39,8 +35,13 @@ export function SwipeDeck<T>({ items, index, onIndexChange, renderItem }: SwipeD
       // Only claim the gesture once it's clearly horizontal, so vertical
       // scrolling inside a card (and Telegram's own swipe-to-close) still work.
       if (Math.abs(dx) < 10 && Math.abs(dy) < 10) return;
-      horizontal.current = Math.abs(dx) > Math.abs(dy) * 1.5;
+      horizontal.current = Math.abs(dx) > Math.abs(dy) * 1.2;
       if (!horizontal.current) return;
+      // Capture only once a real horizontal drag is confirmed — not on every
+      // pointerdown — so plain taps (counter, goal overlay, info button) never
+      // touch pointer capture at all. Guarantees pointerup/pointercancel still
+      // reaches this element even if the finger leaves it mid-drag.
+      (e.currentTarget as Element).setPointerCapture(e.pointerId);
     }
     dragXRef.current = dx;
     setDragX(dx);
