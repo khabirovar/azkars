@@ -43,7 +43,7 @@ export function Reader({ entries, index, onIndexChange }: ReaderProps) {
                 <div class="reader-translation">{entry.translationRu}</div>
               </div>
             </div>
-            <Counter id={entry.id} targetCount={entry.targetCount} />
+            <Counter targetCount={entry.targetCount} />
           </>
         )}
       />
