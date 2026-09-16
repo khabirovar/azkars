@@ -81,14 +81,21 @@ button {
   gap: 12px;
 }
 
+.list-item-text {
+  flex: 1;
+  min-width: 0;
+}
+
 .list-item-arabic {
   font-size: 1.1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   direction: rtl;
-  flex: 1;
   color: var(--verse);
+}
+
+.list-item-translit {
+  font-size: 0.9rem;
+  color: var(--ink-dim);
+  margin-top: 4px;
 }
 
 .list-item-target {
