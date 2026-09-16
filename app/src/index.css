@@ -1,11 +1,12 @@
 :root {
-  --bg: #2b1d0d;
-  --bg-panel: #3a2a12;
-  --border-gold: #a97c3c;
-  --text: #e8d9c0;
-  --text-dim: #b8a684;
-  --accent: #7fd9c4;
-  --danger: #c0664a;
+  --bg: #12141c;
+  --bg-panel: #1b202c;
+  --bg-raised: #242b3a;
+  --hairline: rgba(237, 230, 216, 0.1);
+  --ink: #ede6d8;
+  --ink-dim: #8f8676;
+  --ember: #d98a3d;
+  --verse: #86a077;
 }
 
 * {
@@ -14,7 +15,7 @@
 
 body {
   background: var(--bg);
-  color: var(--text);
+  color: var(--ink);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -44,33 +45,33 @@ button {
   text-align: center;
   font-size: 1.4rem;
   margin-bottom: 24px;
-  color: var(--text);
+  color: var(--ink);
 }
 
 .home-button {
   background: var(--bg-panel);
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--hairline);
   border-radius: 16px;
-  color: var(--text);
+  color: var(--ink);
   font-size: 1.2rem;
   padding: 24px;
   text-align: center;
 }
 
 .home-button:active {
-  background: var(--border-gold);
+  background: var(--bg-raised);
 }
 
 /* List */
 .list-header {
   font-size: 1.1rem;
   margin-bottom: 12px;
-  color: var(--text-dim);
+  color: var(--ink-dim);
 }
 
 .list-item {
   background: var(--bg-panel);
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--hairline);
   border-radius: 12px;
   padding: 14px;
   margin-bottom: 10px;
@@ -87,10 +88,11 @@ button {
   white-space: nowrap;
   direction: rtl;
   flex: 1;
+  color: var(--verse);
 }
 
 .list-item-target {
-  color: var(--text-dim);
+  color: var(--ink-dim);
   font-size: 0.85rem;
   flex-shrink: 0;
 }
@@ -134,11 +136,11 @@ button {
   top: 12px;
   right: 12px;
   background: transparent;
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--hairline);
   border-radius: 50%;
   width: 28px;
   height: 28px;
-  color: var(--text-dim);
+  color: var(--ink-dim);
   line-height: 1;
 }
 
@@ -147,7 +149,7 @@ button {
   font-size: 1.6rem;
   line-height: 2.2rem;
   text-align: center;
-  color: var(--accent);
+  color: var(--verse);
   margin-bottom: 16px;
 }
 
@@ -160,7 +162,7 @@ button {
 
 .reader-translation {
   font-size: 0.95rem;
-  color: var(--text-dim);
+  color: var(--ink-dim);
   text-align: center;
 }
 
@@ -177,7 +179,7 @@ button {
 }
 
 .reader-target {
-  color: var(--text-dim);
+  color: var(--ink-dim);
   font-size: 0.9rem;
   align-self: flex-end;
 }
@@ -185,18 +187,19 @@ button {
 .reader-count {
   font-size: 4rem;
   font-weight: 300;
-  color: var(--text);
+  color: var(--ember);
 }
 
 .reader-total {
-  color: var(--text-dim);
+  color: var(--ink-dim);
   font-size: 0.85rem;
 }
 
 .goal-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(58, 42, 18, 0.95);
+  background: rgba(18, 20, 28, 0.96);
+  border: 1px solid var(--ember);
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -220,7 +223,7 @@ button {
 
 .source-popup-content {
   background: var(--bg-panel);
-  border: 1px solid var(--border-gold);
+  border: 1px solid var(--hairline);
   border-radius: 12px;
   padding: 20px;
   max-height: 70vh;
