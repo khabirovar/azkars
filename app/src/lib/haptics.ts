@@ -1,12 +1,18 @@
 import { getTg } from "./telegram";
 
-// notificationOccurred is preferred over impactOccurred: the latter is reported
-// broken on some Telegram-for-Android builds, while notificationOccurred still
-// works there.
+// Neither method is universally reliable across Telegram client builds —
+// notificationOccurred is reported broken on some, impactOccurred on others.
+// Fire both independently so one working method is enough to get a vibration.
 export function goalReachedHaptic(): void {
+  const tg = getTg();
   try {
-    getTg()?.HapticFeedback?.notificationOccurred("success");
+    tg?.HapticFeedback?.notificationOccurred("success");
   } catch {
     // no-op: haptics are a nice-to-have, never block the UI on failure
+  }
+  try {
+    tg?.HapticFeedback?.impactOccurred("heavy");
+  } catch {
+    // no-op
   }
 }
