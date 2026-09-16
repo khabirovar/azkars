@@ -2,6 +2,7 @@ import { useEffect, useState } from "preact/hooks";
 import type { AzkarEntry, TimeOfDay } from "./types/azkar";
 import { getByTimeOfDay } from "./lib/azkarStore";
 import { safeTg } from "./lib/telegram";
+import { loadSettings, saveSetting, type Settings } from "./lib/settings";
 import { Home } from "./screens/Home";
 import { AzkarList } from "./screens/AzkarList";
 import { Reader } from "./screens/Reader";
@@ -11,6 +12,12 @@ type Screen = { name: "home" } | { name: "list"; timeOfDay: TimeOfDay } | { name
 export function App() {
   const [screen, setScreen] = useState<Screen>({ name: "home" });
   const [entries, setEntries] = useState<AzkarEntry[]>([]);
+  const [settings, setSettings] = useState<Settings>(() => loadSettings());
+
+  function handleSettingChange(key: keyof Settings, value: boolean) {
+    setSettings((prev) => ({ ...prev, [key]: value }));
+    saveSetting(key, value);
+  }
 
   useEffect(() => {
     if (screen.name === "home") {
@@ -44,7 +51,13 @@ export function App() {
   }, [screen.name === "home" ? null : screen.timeOfDay]);
 
   if (screen.name === "home") {
-    return <Home onSelect={(timeOfDay) => setScreen({ name: "list", timeOfDay })} />;
+    return (
+      <Home
+        onSelect={(timeOfDay) => setScreen({ name: "list", timeOfDay })}
+        settings={settings}
+        onSettingChange={handleSettingChange}
+      />
+    );
   }
 
   if (screen.name === "list") {
@@ -62,6 +75,7 @@ export function App() {
       entries={entries}
       index={screen.index}
       onIndexChange={(index) => setScreen({ name: "reader", timeOfDay: screen.timeOfDay, index })}
+      settings={settings}
     />
   );
 }
