@@ -71,7 +71,6 @@ export function App() {
 
   return (
     <Reader
-      timeOfDay={screen.timeOfDay}
       entries={entries}
       index={screen.index}
       onIndexChange={(index) => setScreen({ name: "reader", timeOfDay: screen.timeOfDay, index })}

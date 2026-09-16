@@ -10,7 +10,9 @@ const KEYS = {
 
 function readBool(key: string, fallback: boolean): boolean {
   const raw = localStorage.getItem(key);
-  return raw === null ? fallback : raw === "true";
+  if (raw === "true") return true;
+  if (raw === "false") return false;
+  return fallback;
 }
 
 export function loadSettings(): Settings {

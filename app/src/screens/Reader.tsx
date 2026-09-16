@@ -1,11 +1,10 @@
 import { useEffect, useState } from "preact/hooks";
-import type { AzkarEntry, TimeOfDay } from "../types/azkar";
+import type { AzkarEntry } from "../types/azkar";
 import type { Settings } from "../lib/settings";
 import { SwipeDeck } from "../components/SwipeDeck";
 import { Counter } from "../components/Counter";
 
 interface ReaderProps {
-  timeOfDay: TimeOfDay;
   entries: AzkarEntry[];
   index: number;
   onIndexChange: (index: number) => void;
