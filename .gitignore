@@ -1,0 +1,12 @@
+data/*.apk
+data/*.pdf
+data/source/audio/
+data/source/dailyzikr-strings.xml
+
+app/node_modules/
+app/dist/
+app/*.tsbuildinfo
+.claude/
+scripts/
+
+bot/.env

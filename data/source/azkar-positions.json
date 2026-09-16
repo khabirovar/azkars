@@ -1,0 +1,76 @@
+{
+  "_comment": "Структурная карта азкаров DailyZikr (tm.foundation.nohchiadam.azkars), извлечённая вручную из декомпилированного smali-кода (packed-switch в utro.smali/vecher.smali/namaz.smali). Каждый слот — одна карточка исходного приложения; parts — арабский/транслитерация/перевод по именам строковых ресурсов из dailyzikr-strings.xml; counts — целевое число повторений на каждую часть слота; dalil — имя строкового ресурса с указанием источника хадиса (null, если для этого слота источник в исходном APK не привязан однозначно — см. ниже про вечерние уникальные пункты). Слот из 4 частей (utro22a..utro25a) в контексте morning/evening — это ОТДЕЛЬНЫЙ хадис 'Субханаллах x100, Альхамдулиллях x100, Аллаху Акбар x100, Ля иляха илля-Ллах... x100' (проверено по Azkar.pdf, изд. 'Азкар ас-сабах ва-ль-масаа', стр. 41-42 печатной нумерации, и независимо подтверждено текстом dalil23) — все четыре по 100, не 33/33/33+1. Та же пара текстовых ресурсов, переиспользованная в after-prayer, — это другой, отдельный хадис (тасбих Фатимы, 33/33/33 + завершающий такбир один раз), корректно применяется только там. Пара utro26a/utro27a ('Субханаллахи ва бихамдихи' и альтернативная формулировка 'аль-'азым') — два варианта одного и того же 100-кратного зикра, обе части по 100. Сырые ресурсы repeatXX в самом APK для этих мест были внутренне противоречивы (repeat100 на utro/vecher, repeat33+nul на namaz для одной и той же группы) — значения выверены по эталонному тексту, а не взяты напрямую из смали. Для источника хадиса: morning использует общий пул dalil1..dalil25 по формуле dalil{позиция+1} (подтверждено сверкой содержимого dalil21 и dalil23 с ожидаемым текстом); evening наследует тот же dalil у слотов, переиспользующих текст utro, а для 6 уникальных вечерних пунктов (vecher1, vecher2, vecher6, vecher9, vecher15, vecher22) источник оставлен null, чтобы не приписать хадису чужую ссылку; namaz использует свои собственные ресурсы namaz{N}dalil один-в-один по позиции (с одним нерегулярным именем namaz6_1dalil для 6-й позиции).",
+  "categories": {
+    "morning": {
+      "audioPrefix": "utrnplay",
+      "slots": [
+        { "parts": [["utro1a", "utrotr", "utro1"]], "counts": [1], "dalil": "dalil1" },
+        { "parts": [["utro2a", "utrotr2", "utro2"]], "counts": [1], "dalil": "dalil2" },
+        { "parts": [["utro3a", "utrotr3", "utro3"]], "counts": [1], "dalil": "dalil3" },
+        { "parts": [["utro4a", "utrotr4", "utro4"]], "counts": [1], "dalil": "dalil4" },
+        { "parts": [["utro5a", "utrotr5", "utro5"], ["utro5a2", "utrotr5_2", "utro52"], ["utro5a3", "utrotr5_3", "utro53"]], "counts": [3, 3, 3], "dalil": "dalil5" },
+        { "parts": [["utro6a", "utrotr6", "utro6"]], "counts": [4], "dalil": "dalil6" },
+        { "parts": [["utro7a", "utrotr7", "utro7"]], "counts": [3], "dalil": "dalil7" },
+        { "parts": [["utro8a", "utrotr8", "utro8"]], "counts": [1], "dalil": "dalil8" },
+        { "parts": [["utro9a", "utrotr9", "utro9"]], "counts": [1], "dalil": "dalil9" },
+        { "parts": [["utro10a", "utrotr10", "utro10"]], "counts": [1], "dalil": "dalil10" },
+        { "parts": [["utro11a", "utrotr11", "utro11"]], "counts": [1], "dalil": "dalil11" },
+        { "parts": [["utro12a", "utrotr12", "utro12"]], "counts": [1], "dalil": "dalil12" },
+        { "parts": [["utro13a", "utrotr13", "utro13"]], "counts": [1], "dalil": "dalil13" },
+        { "parts": [["utro14a", "utrotr14", "utro14"]], "counts": [10], "dalil": "dalil14" },
+        { "parts": [["utro15a", "utrotr15", "utro15"]], "counts": [3], "dalil": "dalil15" },
+        { "parts": [["utro16a", "utrotr16", "utro16"]], "counts": [1], "dalil": "dalil16" },
+        { "parts": [["utro17a", "utrotr17", "utro17"]], "counts": [3], "dalil": "dalil17" },
+        { "parts": [["utro18a", "utrotr18", "utro18"]], "counts": [1], "dalil": "dalil18" },
+        { "parts": [["utro19a", "utrotr19", "utro19"]], "counts": [1], "dalil": "dalil19" },
+        { "parts": [["utro20a", "utrotr20", "utro20"]], "counts": [7], "dalil": "dalil20" },
+        { "parts": [["utro21a", "utrotr21", "utro21"]], "counts": [100], "dalil": "dalil21" },
+        { "parts": [["utro22a", "namaztr5", "utro22"], ["utro23a", "namaztr5_2", "utro23"], ["utro24a", "namaztr5_3", "utro24"], ["utro25a", "namaztr5_4", "utro25"]], "counts": [100, 100, 100, 100], "dalil": "dalil22" },
+        { "parts": [["utro26a", "utrotr23", "utro26"], ["utro27a", "utrotr23_2", "utro27"]], "counts": [100, 100], "dalil": "dalil23" },
+        { "parts": [["utro28a", "utrotr24", "utro28"]], "counts": [10], "dalil": "dalil24" }
+      ]
+    },
+    "evening": {
+      "audioPrefix": "vplay",
+      "slots": [
+        { "parts": [["vecher1a", "vechertr", "vecher1"]], "counts": [1], "dalil": null },
+        { "parts": [["vecher2a", "vechertr2", "vecher2"]], "counts": [1], "dalil": null },
+        { "parts": [["utro3a", "utrotr3", "utro3"]], "counts": [1], "dalil": "dalil3" },
+        { "parts": [["utro4a", "utrotr4", "utro4"]], "counts": [1], "dalil": "dalil4" },
+        { "parts": [["utro5a", "utrotr5", "utro5"], ["utro5a2", "utrotr5_2", "utro52"], ["utro5a3", "utrotr5_3", "utro53"]], "counts": [3, 3, 3], "dalil": "dalil5" },
+        { "parts": [["vecher6a", "vechertr6", "vecher6"]], "counts": [4], "dalil": null },
+        { "parts": [["utro7a", "utrotr7", "utro7"]], "counts": [3], "dalil": "dalil7" },
+        { "parts": [["utro8a", "utrotr8", "utro8"]], "counts": [1], "dalil": "dalil8" },
+        { "parts": [["vecher9a", "vechertr9", "vecher9"]], "counts": [1], "dalil": null },
+        { "parts": [["utro10a", "utrotr10", "utro10"]], "counts": [1], "dalil": "dalil10" },
+        { "parts": [["utro11a", "utrotr11", "utro11"]], "counts": [1], "dalil": "dalil11" },
+        { "parts": [["utro12a", "utrotr12", "utro12"]], "counts": [1], "dalil": "dalil12" },
+        { "parts": [["utro13a", "utrotr13", "utro13"]], "counts": [1], "dalil": "dalil13" },
+        { "parts": [["utro14a", "utrotr14", "utro14"]], "counts": [10], "dalil": "dalil14" },
+        { "parts": [["vecher15a", "vechertr15", "vecher15"]], "counts": [1], "dalil": null },
+        { "parts": [["utro17a", "utrotr17", "utro17"]], "counts": [3], "dalil": "dalil17" },
+        { "parts": [["utro20a", "utrotr20", "utro20"]], "counts": [7], "dalil": "dalil20" },
+        { "parts": [["utro22a", "namaztr5", "utro22"], ["utro23a", "namaztr5_2", "utro23"], ["utro24a", "namaztr5_3", "utro24"], ["utro25a", "namaztr5_4", "utro25"]], "counts": [100, 100, 100, 100], "dalil": "dalil22" },
+        { "parts": [["vecher22a", "vechertr19", "vecher22"]], "counts": [3], "dalil": null },
+        { "parts": [["utro26a", "utrotr23", "utro26"], ["utro27a", "utrotr23_2", "utro27"]], "counts": [100, 100], "dalil": "dalil23" },
+        { "parts": [["utro28a", "utrotr24", "utro28"]], "counts": [10], "dalil": "dalil24" }
+      ]
+    },
+    "after-prayer": {
+      "audioPrefix": "namazplay",
+      "slots": [
+        { "parts": [["namaz1a", "namaztr", "namaz1"]], "counts": [1], "dalil": "namaz1dalil" },
+        { "parts": [["namaz2a", "namaztr2", "namaz2"], ["namaz2_1", "namaztr2_2", "namaz2_2"]], "counts": [1, 1], "dalil": "namaz2dalil" },
+        { "parts": [["namaz3a", "namaztr3", "namaz3"]], "counts": [1], "dalil": "namaz3dalil" },
+        { "parts": [["namaz4a", "namaztr4", "namaz4"]], "counts": [1], "dalil": "namaz4dalil" },
+        { "parts": [["utro22a", "namaztr5", "utro22"], ["utro23a", "namaztr5_2", "utro23"], ["utro24a", "namaztr5_3", "utro24"], ["utro25a", "namaztr5_4", "utro25"]], "counts": [33, 33, 33, 1], "dalil": "namaz5dalil" },
+        { "parts": [["utro13a", "utrotr13", "utro13"], ["utro5a", "utrotr5", "utro5"], ["utro5a2", "utrotr5_2", "utro52"], ["utro5a3", "utrotr5_3", "utro53"]], "counts": [1, 1, 1, 1], "dalil": "namaz6_1dalil" },
+        { "parts": [["namaz7a", "namaztr7", "namaz7"]], "counts": [1], "dalil": "namaz7dalil" },
+        { "parts": [["namaz8a", "namaztr8", "namaz8"]], "counts": [1], "dalil": "namaz8dalil" },
+        { "parts": [["namaz9a", "namaztr9", "namaz9"]], "counts": [1], "dalil": "namaz9dalil" },
+        { "parts": [["namaz10a", "namaztr10", "namaz10"]], "counts": [1], "dalil": "namaz10dalil" },
+        { "parts": [["namaz11a", "namaztr11", "namaz11"]], "counts": [10], "dalil": "namaz11dalil" }
+      ]
+    }
+  }
+}

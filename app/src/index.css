@@ -1,0 +1,234 @@
+:root {
+  --bg: #2b1d0d;
+  --bg-panel: #3a2a12;
+  --border-gold: #a97c3c;
+  --text: #e8d9c0;
+  --text-dim: #b8a684;
+  --accent: #7fd9c4;
+  --danger: #c0664a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  padding-block: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-bottom));
+}
+
+/* Home */
+.home {
+  justify-content: center;
+  gap: 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.home-title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.home-button {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-gold);
+  border-radius: 16px;
+  color: var(--text);
+  font-size: 1.2rem;
+  padding: 24px;
+  text-align: center;
+}
+
+.home-button:active {
+  background: var(--border-gold);
+}
+
+/* List */
+.list-header {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: var(--text-dim);
+}
+
+.list-item {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.list-item-arabic {
+  font-size: 1.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  direction: rtl;
+  flex: 1;
+}
+
+.list-item-target {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* Reader */
+.reader {
+  padding: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.reader-deck {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.reader-card {
+  flex: 0 0 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  min-height: 0;
+}
+
+.reader-top {
+  background: var(--bg-panel);
+  border-radius: 16px;
+  padding: 20px 16px;
+  margin-bottom: 12px;
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.reader-info-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  color: var(--text-dim);
+  line-height: 1;
+}
+
+.reader-arabic {
+  direction: rtl;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.reader-transliteration {
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.reader-translation {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+.reader-bottom {
+  background: var(--bg-panel);
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  flex: 0 0 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reader-target {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  align-self: flex-end;
+}
+
+.reader-count {
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.reader-total {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.goal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(58, 42, 18, 0.95);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 16px;
+}
+
+/* Source info popup */
+.source-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 10;
+}
+
+.source-popup-content {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+}
+
+[hidden] {
+  display: none !important;
+}
