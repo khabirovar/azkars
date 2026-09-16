@@ -90,12 +90,18 @@ button {
   font-size: 1.1rem;
   direction: rtl;
   color: var(--verse);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .list-item-translit {
   font-size: 0.9rem;
   color: var(--ink-dim);
   margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .list-item-target {
@@ -138,13 +144,22 @@ button {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   /* Must match .reader-deck's touch-action: without this, Chrome's gesture
      resolution for a touch starting on this scrollable element cancels the
      pointer sequence entirely on the first horizontal move instead of letting
      it through to the deck's own swipe handling (confirmed via isolated
      repro — the intersection with the ancestor's pan-y alone isn't enough). */
   touch-action: pan-y;
+}
+
+.reader-top-content {
+  /* Centers short text vertically without justify-content:center, which has a
+     known cross-browser bug: combined with overflow-y:auto, some WebKit builds
+     make the start of long overflowing content unreachable by scroll. Auto
+     margins on the single flex child center it when there's room and simply
+     collapse to 0 (no clipping) when the content is taller than the panel. */
+  margin: auto 0;
+  width: 100%;
 }
 
 .reader-info-button {

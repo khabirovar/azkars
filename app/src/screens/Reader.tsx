@@ -34,9 +34,11 @@ export function Reader({ entries, index, onIndexChange }: ReaderProps) {
                   i
                 </button>
               )}
-              <div class="reader-arabic">{entry.arabicText}</div>
-              <div class="reader-transliteration">{entry.transliterationRu}</div>
-              <div class="reader-translation">{entry.translationRu}</div>
+              <div class="reader-top-content">
+                <div class="reader-arabic">{entry.arabicText}</div>
+                <div class="reader-transliteration">{entry.transliterationRu}</div>
+                <div class="reader-translation">{entry.translationRu}</div>
+              </div>
             </div>
             <Counter id={entry.id} targetCount={entry.targetCount} />
           </>
