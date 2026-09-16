@@ -26,9 +26,12 @@ export function Reader({ entries, index, onIndexChange }: ReaderProps) {
         items={entries}
         index={index}
         onIndexChange={onIndexChange}
-        renderItem={(entry) => (
+        renderItem={(entry, i) => (
           <>
             <div class="reader-top">
+              <div class="reader-position">
+                {i + 1}/{entries.length}
+              </div>
               {entry.sourceRu && (
                 <button class="reader-info-button" onClick={() => setSourceOpenFor(entry.id)}>
                   i

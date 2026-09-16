@@ -175,6 +175,14 @@ button {
   line-height: 1;
 }
 
+.reader-position {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+}
+
 .reader-arabic {
   direction: rtl;
   font-size: 1.6rem;
